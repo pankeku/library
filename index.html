@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="text/javascript" src="main.js" defer></script>
+  </head>
+  <body>
+    <form method="get" id="book-form">
+      <label for="book">Title</label
+      ><input type="text" name="title" id="title" />
+
+      <div class="author"><label for="author">Author</label><input type="text" name="author" id="author"></div>
+
+      <div class="pages"><label for="pages">Pages</label><input type="text" name="pages" id="pages"></div>
+
+      <div class="read"><label for="read">Read</label><input type="checkbox" name="read" id="read"></div>
+
+      <input type="submit" class="book-add" form="book-form" value="Add"></input>
+
+    </form>
+
+    <div class="container">
+      <div class="title"></div>
+      <div class="content"></div>
+    </div>
+  </body>
+</html>
