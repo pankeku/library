@@ -1,6 +1,6 @@
 .content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 400px));
     gap: 20px;
 }
 
@@ -10,19 +10,114 @@
     flex-direction: column;
     gap: 5px;
     padding: 10px;
-    width: 200px;
+    position: relative;
 }
 
 .toggle-read {
     border: 0px;
     background-color: #16a34a ;
     color: white;
-    padding: 10px;
+    padding: 5px;
+}
+
+.status {
+    position: absolute;
+    width: 100px;
+    right: 5;
+    bottom: 5;
 }
 
 .toggle-read--active {
     background-color: #e4e4e7;
     color: black;
     font-weight: bold;
-
 }
+
+.delete {
+    width: 18px;
+    position: absolute;
+    top: 5;
+    right: 5;
+}
+
+.add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    border: 0px;
+}
+
+.add:hover {
+    background-color: #e4e4e7;
+}
+
+form {
+    display: none;
+    
+}
+
+.form--show {
+    position: fixed;
+    z-index: 2;
+    background-color: #fde047;
+    padding: 20px;
+    top: 30%;
+    left: 42%;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    border-radius: 10px;
+    
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#read {
+    margin: 0px;
+    padding: 0px;
+    width: 10px;
+}
+
+.checkbox-container {
+    display: flex;
+    gap: 5px;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: gray;
+    opacity: 0.5;
+}
+
+.overlay--active {
+    display: block;
+}
+
+.book-add {
+    border: 0px;
+    background-color: #16a34a ;
+    color: white;
+    padding: 10px;
+    position: absolute;
+    width: 100px;
+    right: 5;
+    bottom: 5;
+}
+
+input {
+    border: 0px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
