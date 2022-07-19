@@ -6,22 +6,10 @@
     <script type="text/javascript" src="main.js" defer></script>
   </head>
   <body>
-    <form method="get" id="book-form">
 
-      <div class="container">
-        <label for="book">Title</label
-        ><input type="text" name="title" id="title" />
-      </div>
-
-      <div class="container"><label for="author">Author</label><input type="text" name="author" id="author"></div>
-
-      <div class="container"><label for="pages">Pages</label><input type="text" name="pages" id="pages"></div>
-
-      <div class="checkbox-container"><label for="read">Read</label><input type="checkbox" name="read" id="read"></div>
-
-      <input type="submit" class="book-add" form="book-form" value="Add"></input>
-
-    </form>
+    <div class="header"> <h1 class="header-counter">LIBRARY OF YO BOOKS</h1> </div>
+    
+    
     <div class="overlay"></div>
     <div class="container">
       <div class="title"></div>
@@ -30,5 +18,22 @@
       
       
     </div>
+
+    <form method="get" id="book-form">
+
+      <div class="container">
+        <label for="book">Title</label
+        ><input type="text" name="title" id="title"  required/>
+      </div>
+
+      <div class="container"><label for="author">Author</label><input type="text" name="author" id="author" required></div>
+
+      <div class="container"><label for="pages">Pages</label><input type="number" name="pages" id="pages" min="1" required></div>
+
+      <div class="checkbox-container"><label for="read">Read</label><input type="checkbox" name="read" id="read"></div>
+
+      <input type="submit" class="book-add" form="book-form" value="Add"></input>
+
+    </form>
   </body>
 </html>

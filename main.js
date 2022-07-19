@@ -4,6 +4,7 @@ const button = document.querySelector('.book-add');
 const form = document.querySelector('#book-form');
 const checkbox = document.querySelector('#read');
 const overlay = document.querySelector('.overlay');
+const headerCounter = document.querySelector('.header-counter');
 
 let library = [];
 
@@ -36,6 +37,7 @@ function initialBooks() {
 
 form.addEventListener('submit', function (event) {
   event.preventDefault();
+
   addBookToLibrary(
     new Book(
       form.title.value,
@@ -46,6 +48,7 @@ form.addEventListener('submit', function (event) {
   );
   form.classList.remove('form--show');
   overlay.classList.remove('overlay--active');
+  clearForm();
 });
 
 function displayBooks() {
@@ -55,6 +58,7 @@ function displayBooks() {
 
   createBookCards();
   createAddCard();
+  updateCounter();
 }
 
 function createBookCards() {
@@ -71,20 +75,24 @@ function createBookCards() {
 
     title.classList.add('title');
     title.textContent = book.title;
+    title.id = 'title';
     author.classList.add('author');
     author.textContent = book.author;
     pages.classList.add('pages');
     pages.textContent = book.pages;
 
     status.classList.add('toggle-read');
-    status.classList.add('status');    
-
+    status.classList.add('status');
     remove.classList.add('delete');
     remove.setAttribute('type', 'image');
-    remove.setAttribute('src', "images/delete.png")
+    remove.setAttribute('src', 'images/delete.png');
     remove.textContent = 'Delete';
 
     bookCard.append(title, author, pages, status, remove);
+
+    wrapper(title);
+    wrapper(author);
+    wrapper(pages);
 
     buttonState(status);
 
@@ -98,6 +106,14 @@ function createBookCards() {
   }
 }
 
+function wrapper(element) {
+  const label = document.createElement('label');
+  label.textContent =
+    element.className[0].toUpperCase() + element.className.substring(1);
+  element.parentElement.append(label);
+  label.append(element);
+}
+
 function createAddCard() {
   const add = document.createElement('button');
 
@@ -106,19 +122,11 @@ function createAddCard() {
   add.textContent = '+';
   content.appendChild(add);
 
-  add.addEventListener('click', function(e) {
+  add.addEventListener('click', function (e) {
     form.classList.add('form--show');
     overlay.classList.add('overlay--active');
-    
-
-  })
+  });
 }
-
-
-
-
-
-
 
 function toggleStatusAndButton(item) {
   const card = item.parentElement;
@@ -152,8 +160,8 @@ function removeBook(item) {
   const index = item.getAttribute('data-number');
   library.splice(index, 1);
   item.remove();
-
   updateDataNumbers();
+  updateCounter();
 }
 
 function updateDataNumbers() {
@@ -167,4 +175,23 @@ function updateDataNumbers() {
 function addBookToLibrary(book) {
   library.push(book);
   displayBooks();
+}
+
+overlay.addEventListener('click', () => {
+  form.classList.remove('form--show');
+  overlay.classList.remove('overlay--active');
+  clearForm();
+});
+
+function clearForm() {
+  form.title.value = '';
+  form.author.value = '';
+  form.pages.value = '';
+  checkbox.checked = false;
+}
+
+function updateCounter() {
+  headerCounter.textContent = `LIBRARY OF ${library.length} ${
+    library.length === 1 ? 'BOOK' : 'BOOKS'
+  }`;
 }
